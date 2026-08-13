@@ -1,4 +1,3 @@
-import { WorkerMailer } from "worker-mailer";
 import { freeBooks, PROMPT_LIBRARY_URL } from "./free-books";
 import type { Lang } from "./i18n";
 
@@ -60,6 +59,7 @@ export async function sendPurchaseEmail(opts: {
   const cfg = smtpConfig();
   if (!cfg) throw new Error("SMTP credentials are not configured");
 
+  const { WorkerMailer } = await import("worker-mailer");
   const mailer = await WorkerMailer.connect({
     host: cfg.host,
     port: cfg.port,

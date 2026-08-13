@@ -6,10 +6,15 @@ export const isLang = (v: string): v is Lang => (LANGS as readonly string[]).inc
 export const dir = (lang: Lang) => (lang === "ar" ? "rtl" : "ltr");
 
 /** Product prices differ per market (Arabic edition is priced for MENA). */
+/** Prices are charged in EGP through Kashier. */
 export const PRICING = {
-  ar: { book: 9, bundle: 39 },
-  en: { book: 10, bundle: 49 },
+  ar: { book: 499, bundle: 1999 },
+  en: { book: 499, bundle: 1999 },
 } as const satisfies Record<Lang, { book: number; bundle: number }>;
+
+/** Currency label shown next to prices. */
+export const priceLabel = (lang: Lang, amount: number) =>
+  lang === "ar" ? `${amount} ج.م` : `${amount} EGP`;
 
 export type ProductId = "book" | "bundle";
 

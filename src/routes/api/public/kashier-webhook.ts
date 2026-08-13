@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { verifyKashierWebhook } from "@/lib/kashier.server";
-import { sendPurchaseEmail } from "@/lib/email.server";
-import type { Lang } from "@/lib/i18n";
 
 const PAID = new Set(["success", "succeeded", "paid", "captured", "approved"]);
 

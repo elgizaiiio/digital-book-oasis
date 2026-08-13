@@ -59,25 +59,9 @@ export const Route = createFileRoute("/api/public/kashier-webhook")({
             .eq("id", purchase.id);
         }
 
-        if (!purchase.email_sent) {
-          const origin = new URL(request.url).origin;
-          const lang = (purchase.lang ?? "ar") as Lang;
-          const libraryUrl = `${origin}/${lang}/library?token=${purchase.access_token}`;
-          try {
-            await sendPurchaseEmail({
-              to: purchase.email,
-              lang,
-              libraryUrl,
-              bundle: purchase.product === "bundle",
-            });
-            await supabaseAdmin
-              .from("purchases")
-              .update({ email_sent: true })
-              .eq("id", purchase.id);
-          } catch (err) {
-            console.error("purchase email failed", err);
-          }
-        }
+        // Delivery happens on-site: the buyer is redirected to /{lang}/thank-you?p={id}
+        // which shows the full order details and the private library link.
+
 
         return new Response("ok");
       },

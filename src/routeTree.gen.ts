@@ -10,33 +10,89 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LangIndexRouteImport } from './routes/$lang.index'
+import { Route as LangLibraryRouteImport } from './routes/$lang.library'
+import { Route as LangThankYouRouteImport } from './routes/$lang.thank-you'
+import { Route as ApiPublicKashierWebhookRouteImport } from './routes/api/public/kashier-webhook'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LangIndexRoute = LangIndexRouteImport.update({
+  id: '/$lang/',
+  path: '/$lang/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangLibraryRoute = LangLibraryRouteImport.update({
+  id: '/$lang/library',
+  path: '/$lang/library',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangThankYouRoute = LangThankYouRouteImport.update({
+  id: '/$lang/thank-you',
+  path: '/$lang/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicKashierWebhookRoute = ApiPublicKashierWebhookRouteImport.update({
+  id: '/api/public/kashier-webhook',
+  path: '/api/public/kashier-webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$lang/library': typeof LangLibraryRoute
+  '/$lang/thank-you': typeof LangThankYouRoute
+  '/$lang/': typeof LangIndexRoute
+  '/api/public/kashier-webhook': typeof ApiPublicKashierWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$lang/library': typeof LangLibraryRoute
+  '/$lang/thank-you': typeof LangThankYouRoute
+  '/$lang': typeof LangIndexRoute
+  '/api/public/kashier-webhook': typeof ApiPublicKashierWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$lang/library': typeof LangLibraryRoute
+  '/$lang/thank-you': typeof LangThankYouRoute
+  '/$lang/': typeof LangIndexRoute
+  '/api/public/kashier-webhook': typeof ApiPublicKashierWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/$lang/library'
+    | '/$lang/thank-you'
+    | '/$lang/'
+    | '/api/public/kashier-webhook'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/$lang/library'
+    | '/$lang/thank-you'
+    | '/$lang'
+    | '/api/public/kashier-webhook'
+  id:
+    | '__root__'
+    | '/'
+    | '/$lang/library'
+    | '/$lang/thank-you'
+    | '/$lang/'
+    | '/api/public/kashier-webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LangLibraryRoute: typeof LangLibraryRoute
+  LangThankYouRoute: typeof LangThankYouRoute
+  LangIndexRoute: typeof LangIndexRoute
+  ApiPublicKashierWebhookRoute: typeof ApiPublicKashierWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +104,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$lang/': {
+      id: '/$lang/'
+      path: '/$lang'
+      fullPath: '/$lang/'
+      preLoaderRoute: typeof LangIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/library': {
+      id: '/$lang/library'
+      path: '/$lang/library'
+      fullPath: '/$lang/library'
+      preLoaderRoute: typeof LangLibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/thank-you': {
+      id: '/$lang/thank-you'
+      path: '/$lang/thank-you'
+      fullPath: '/$lang/thank-you'
+      preLoaderRoute: typeof LangThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/kashier-webhook': {
+      id: '/api/public/kashier-webhook'
+      path: '/api/public/kashier-webhook'
+      fullPath: '/api/public/kashier-webhook'
+      preLoaderRoute: typeof ApiPublicKashierWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LangLibraryRoute: LangLibraryRoute,
+  LangThankYouRoute: LangThankYouRoute,
+  LangIndexRoute: LangIndexRoute,
+  ApiPublicKashierWebhookRoute: ApiPublicKashierWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

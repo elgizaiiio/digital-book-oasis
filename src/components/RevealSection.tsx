@@ -63,7 +63,7 @@ export default function RevealSection({ lang }: { lang: Lang }) {
         </div>
 
         <div className="order-1 lg:order-2">
-          <div className="relative mx-auto w-full max-w-md">
+          <div className="relative mx-auto w-full max-w-md lg:ml-auto lg:mr-0" style={{ transform: "translateX(1.5rem)" }}>
             <div className="absolute -inset-6 rounded-[2rem] bg-gray-50" aria-hidden />
             <video
               src={BOOK_VIDEO}

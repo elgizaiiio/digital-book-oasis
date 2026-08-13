@@ -14,7 +14,75 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      library_requests: {
+        Row: {
+          created_at: string
+          email: string
+          error: string | null
+          id: string
+          sent: boolean
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          error?: string | null
+          id?: string
+          sent?: boolean
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          error?: string | null
+          id?: string
+          sent?: boolean
+        }
+        Relationships: []
+      }
+      purchases: {
+        Row: {
+          access_token: string
+          amount: number
+          created_at: string
+          currency: string
+          email: string
+          email_sent: boolean
+          id: string
+          lang: string
+          paid_at: string | null
+          product: string
+          provider_payment_id: string | null
+          status: string
+        }
+        Insert: {
+          access_token?: string
+          amount: number
+          created_at?: string
+          currency?: string
+          email: string
+          email_sent?: boolean
+          id?: string
+          lang?: string
+          paid_at?: string | null
+          product: string
+          provider_payment_id?: string | null
+          status?: string
+        }
+        Update: {
+          access_token?: string
+          amount?: number
+          created_at?: string
+          currency?: string
+          email?: string
+          email_sent?: boolean
+          id?: string
+          lang?: string
+          paid_at?: string | null
+          product?: string
+          provider_payment_id?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

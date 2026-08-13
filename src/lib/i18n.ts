@@ -5,7 +5,6 @@ export const isLang = (v: string): v is Lang => (LANGS as readonly string[]).inc
 
 export const dir = (lang: Lang) => (lang === "ar" ? "rtl" : "ltr");
 
-/** Product prices differ per market (Arabic edition is priced for MENA). */
 /** Prices are charged in EGP through Kashier. */
 export const PRICING = {
   ar: { book: 499, bundle: 1999 },
@@ -114,129 +113,212 @@ type Dict = {
     openLibrary: string;
     pending: string;
     failed: string;
+    orderTitle: string;
+    orderId: string;
+    emailField: string;
+    productField: string;
+    amountField: string;
+    dateField: string;
+    statusField: string;
+    statusPaid: string;
+    statusPending: string;
+    statusFailed: string;
+    productBook: string;
+    productBundle: string;
+    includes: string;
+    includesBook: string;
+    includesPrompts: string;
+    includesBooks: string;
+    includesUpdates: string;
+    saveLink: string;
+    copyLink: string;
+    copied: string;
+    support: string;
   };
 };
 
 const ar: Dict = {
   htmlLang: "ar",
   seo: {
-    title: "كيف تربح من الذكاء الاصطناعي — كتاب المليون دولار",
+    title: "إزاي تكسب من الذكاء الاصطناعي — كتاب المليون دولار",
     description:
-      "دليل عملي بالعربية لبناء دخل حقيقي من الذكاء الاصطناعي: خطة 30 يوماً، مكتبة برومبتات، ونماذج أتمتة جاهزة.",
+      "دليل عملي بالمصري تبني بيه دخل حقيقي من الذكاء الاصطناعي: خطة ٣٠ يوم، مكتبة برومبتات، وقوالب أتمتة جاهزة.",
   },
   nav: { home: "الرئيسية", book: "الكتاب", pricing: "الباقات", reviews: "الآراء" },
   hero: {
-    offer: "العرض ينتهي خلال",
+    offer: "العرض هيقفل خلال",
     offerValue: "٤٨ ساعة • خصم ٤٠٪",
-    buy: "اشترِ الآن",
+    buy: "اشتري دلوقتي",
     menu: "القائمة",
-    line1: "توقف عن مطاردة",
+    line1: "بطّل تجري ورا",
     line2: "الفرص العشوائية.",
     paragraph:
-      "أدواتك ومهاراتك مبعثرة على عشرات المنصات. هذا الكتاب يجمعها في نظام واحد واضح، يحوّل الذكاء الاصطناعي إلى مصدر دخل حقيقي — خطوة بخطوة حتى أول مليون دولار.",
-    cta: "احصل على الكتاب",
+      "أدواتك ومهاراتك مبعترة على عشرات المنصات. الكتاب ده بيلمّها كلها في نظام واحد واضح، يحوّل الذكاء الاصطناعي لمصدر دخل حقيقي — خطوة بخطوة لحد أول مليون دولار.",
+    cta: "هات الكتاب",
     demoAlt: "مقدمة الكتاب",
-    playLabel: "تشغيل المقدمة",
-    watchDemo: "شاهد المقدمة",
+    playLabel: "شغّل المقدمة",
+    watchDemo: "اتفرج على المقدمة",
   },
   bookSection: {
     eyebrow: "الكتاب",
     title1: "مليون دولار",
     title2: "بالذكاء الاصطناعي",
     paragraph:
-      "دليل واضح وخالٍ من الضجيج: كيف تختار السوق، تبني منتجاً بالذكاء الاصطناعي، وتسعّره لدخلٍ متكرر يستمر بعد انتهاء الترندات.",
+      "كلام واضح من غير لف ودوران: إزاي تختار السوق، وتبني منتج بالذكاء الاصطناعي، وتحطله سعر يجيبلك دخل شهري مستمر حتى بعد ما الترند يعدّي.",
     facts: [
-      { k: "١٢", v: "فصلاً عملياً" },
+      { k: "١٢", v: "فصل عملي" },
       { k: "٢٠٠+", v: "برومبت جاهز" },
-      { k: "٣٠", v: "يوماً للتنفيذ" },
+      { k: "٣٠", v: "يوم للتنفيذ" },
     ],
-    cta: "اشترِ الكتاب",
+    cta: "اشتري الكتاب",
   },
   benefits: {
-    badge: "ماذا يقدّم الكتاب",
-    title: "نظام واضح، لا نصائح عامة",
-    subtitle: "ثلاث ركائز تنقلك من التجربة العشوائية إلى دخل متكرر.",
+    badge: "الكتاب بيقدّم إيه",
+    title: "نظام واضح، مش نصايح عامة",
+    subtitle: "٣ حاجات بس هينقلوك من التجربة العشوائية لدخل شهري ثابت.",
     start: "البداية",
     peak: "الذروة",
     month1: "شهر ١",
     month6: "شهر ٦",
     month12: "شهر ١٢",
     assistant: "مساعد الذكاء الاصطناعي",
-    question: "كيف أبدأ أول منتج لي؟",
+    question: "أبدأ أول منتج ليا إزاي؟",
     answer:
-      "حدّد السوق، اكتب العرض، وابنِ المنتج خلال ٣٠ يوماً — الكتاب يعطيك البرومبتات وسير العمل الجاهز.",
-    runNow: "نفّذ الآن",
-    timeSaved: "الوقت الموفَّر",
+      "حدّد السوق، اكتب العرض، وابني المنتج في ٣٠ يوم — الكتاب مديك البرومبتات وخطوات الشغل جاهزة.",
+    runNow: "نفّذ دلوقتي",
+    timeSaved: "الوقت اللي وفّرته",
     hours: "١٢٨ ساعة",
     efficiency: "↑ ١٨٪ كفاءة",
-    confidence: "ثقة القرار ٩٨٪",
+    confidence: "ثقة في القرار ٩٨٪",
     cards: [
-      { title: "رؤية واضحة", desc: "خارطة أرقام تعرف بها أين أنت وأين ستصل." },
-      { title: "أتمتة كاملة", desc: "سير عمل جاهز ينفّذ بدل ما تشتغل يدوي." },
-      { title: "قرارات أسرع", desc: "تحوّل ما تتعلمه إلى تنفيذ فوري." },
+      { title: "رؤية واضحة", desc: "أرقام قدامك تعرف بيها انت فين وهتوصل فين." },
+      { title: "أتمتة كاملة", desc: "شغل بيمشي لوحده بدل ما تقعد تعمله بإيدك." },
+      { title: "قرارات أسرع", desc: "تحوّل اللي بتتعلمه لتنفيذ على طول." },
     ],
   },
   features: {
-    badge: "المميزات الأساسية",
-    title: "كل ما تحتاجه في مكان واحد",
-    subtitle: "من الفكرة الأولى حتى أول ألف دولار.",
-    promptQuote: ["«اكتب لي عرضاً يبيع خدمة", "استشارات الذكاء الاصطناعي", "لعميل لا يعرفني»"],
+    badge: "أهم المميزات",
+    title: "كل اللي محتاجه في مكان واحد",
+    subtitle: "من أول فكرة لحد أول ألف دولار.",
+    promptQuote: ["«اكتبلي عرض يبيع خدمة", "استشارات الذكاء الاصطناعي", "لعميل معرفنيش»"],
     readyPrompts: "برومبتات جاهزة",
     card1: "مكتبة ٢٠٠ برومبت",
-    steps: ["حدّد السوق", "ابنِ المنتج", "سعّر ووسّع"],
-    card2: "خارطة طريق ٣٠ يوماً",
-    searchLibrary: "ابحث داخل المكتبة",
+    steps: ["حدّد السوق", "ابني المنتج", "سعّر ووسّع"],
+    card2: "خطة ٣٠ يوم",
+    searchLibrary: "دوّر جوه المكتبة",
     card3: "قوالب أتمتة ومجتمع",
   },
   pricing: {
     badge: "الباقات",
-    title: "اختر نسختك",
-    subtitle: "دفعة واحدة، وصول مدى الحياة، تحديثات مجانية.",
-    bookTitle: "الكتاب فقط",
+    title: "اختار نسختك",
+    subtitle: "دفعة واحدة، وصول مدى الحياة، وتحديثات مجانية.",
+    bookTitle: "الكتاب بس",
     bookDesc: "نسخة PDF و EPUB مع تحديثات مجانية.",
-    bundleTitle: "الحزمة الكاملة",
-    bundleDesc:
-      "الكتاب + مكتبة البرومبتات + مكتبة ١٨ كتاباً مختاراً + قوالب الأتمتة + المجتمع الخاص.",
-    buy: "اشترِ الآن",
-    loading: "جارٍ التحويل…",
-    emailLabel: "بريدك الإلكتروني",
+    bundleTitle: "الباقة الكاملة",
+    bundleDesc: "الكتاب + مكتبة البرومبتات + ١٨ كتاب مختار + قوالب الأتمتة + المجتمع الخاص.",
+    buy: "اشتري دلوقتي",
+    loading: "بنحوّلك…",
+    emailLabel: "إيميلك",
     emailPlaceholder: "name@example.com",
-    emailHint: "سنرسل الكتاب والمكتبة على هذا البريد بعد الدفع.",
-    error: "تعذّر بدء عملية الدفع، حاول مرة أخرى.",
+    emailHint: "بعد الدفع هتلاقي كل التفاصيل والروابط قدامك على طول في صفحة الطلب.",
+    error: "معرفناش نبدأ الدفع، جرّب تاني.",
   },
   reviews: {
     badge: "آراء القرّاء",
-    title: "نتائج حقيقية",
-    subtitle: "٤.٩ من ٥ من أكثر من ١٢٠٠ قارئ.",
+    title: "نتايج حقيقية",
+    subtitle: "٤.٩ من ٥ من أكتر من ١٢٠٠ قارئ.",
     items: [
-      { name: "محمود سعيد", role: "مؤسس وكالة تسويق", quote: "طبّقت فصلاً واحداً ورفعت إيراد الوكالة ٣ أضعاف في ٩٠ يوم." },
-      { name: "سارة العتيبي", role: "كاتبة محتوى", quote: "مكتبة البرومبتات وحدها تساوي ثمن الكتاب عشر مرات." },
-      { name: "أحمد فتحي", role: "مطوّر منتجات", quote: "أول منتج SaaS لي خرج للسوق خلال شهر بفضل خارطة الطريق." },
+      {
+        name: "محمود سعيد",
+        role: "صاحب وكالة تسويق",
+        quote: "طبّقت فصل واحد بس، ودخل الوكالة بقى ٣ أضعاف في ٩٠ يوم. مش مبالغة.",
+      },
+      {
+        name: "سارة العتيبي",
+        role: "كاتبة محتوى",
+        quote: "مكتبة البرومبتات لوحدها تسوى تمن الكتاب عشر مرات، بشتغل بيها كل يوم.",
+      },
+      {
+        name: "أحمد فتحي",
+        role: "مطوّر منتجات",
+        quote: "أول منتج SaaS ليا نزل السوق في شهر بفضل خطة الـ٣٠ يوم.",
+      },
+      {
+        name: "مروة عبد الرحمن",
+        role: "مصممة جرافيك",
+        quote: "كنت باخد ٣ مشاريع في الشهر، دلوقتي باخد ٨ ومش تعبانة — الأتمتة عملت الفرق.",
+      },
+      {
+        name: "كريم الشناوي",
+        role: "فريلانسر",
+        quote: "أول عميل بالدولار جالي بعد أسبوعين من قراية الفصل الرابع. جد.",
+      },
+      {
+        name: "نورهان مصطفى",
+        role: "أخصائية سوشيال ميديا",
+        quote: "بقيت بجهّز محتوى شهر كامل في يومين. مديري افتكر إني وظفت حد يساعدني 😅",
+      },
+      {
+        name: "عمرو حسّان",
+        role: "صاحب متجر إلكتروني",
+        quote: "وصف المنتجات والإعلانات بقت كلها بالبرومبتات، ومعدل التحويل زاد ٢٢٪.",
+      },
+      {
+        name: "دينا رأفت",
+        role: "مدرّسة أونلاين",
+        quote: "أسهل كتاب قريته في الموضوع ده، كلام مصري بسيط وخطوات تنفّذها فورًا.",
+      },
+      {
+        name: "زياد الجندي",
+        role: "مهندس برمجيات",
+        quote: "الجزء بتاع التسعير غيّر تفكيري خالص، رفعت أسعاري الضعف ومحدش اعترض.",
+      },
     ],
   },
   cta: {
-    title: "ابدأ رحلتك اليوم",
-    subtitle: "نسخة واحدة تكفي لتغيّر طريقة عملك بالكامل.",
-    button: "احصل على نسختك",
+    title: "ابدأ رحلتك النهاردة",
+    subtitle: "نسخة واحدة تكفي تغيّر طريقة شغلك بالكامل.",
+    button: "هات نسختك",
   },
-  footer: { rights: "كيف تربح من الذكاء الاصطناعي © ٢٠٢٦" },
+  footer: { rights: "إزاي تكسب من الذكاء الاصطناعي © ٢٠٢٦" },
   library: {
     title: "مكتبتك الخاصة",
-    subtitle: "١٨ مرجعاً مختاراً في الذكاء الاصطناعي + مكتبة البرومبتات.",
-    locked: "هذه المكتبة للمشترين فقط",
-    lockedDesc: "بعد إتمام الدفع سيصلك رابط خاص بمكتبتك على بريدك مباشرة.",
+    subtitle: "١٨ مرجع مختار في الذكاء الاصطناعي + مكتبة البرومبتات.",
+    locked: "المكتبة دي للمشتريين بس",
+    lockedDesc: "بعد ما تدفع هتتحوّل على طول لصفحة فيها كل التفاصيل ورابط مكتبتك.",
     open: "افتح الكتاب",
     promptsNote: "مكتبة البرومبتات الخاصة",
-    checking: "جارٍ التحقق من الوصول…",
-    invalid: "الرابط غير صالح أو لم يكتمل الدفع بعد.",
+    checking: "بنتأكد من الوصول…",
+    invalid: "الرابط مش صالح أو الدفع لسه ماتمّش.",
   },
   thanks: {
-    title: "تم الدفع بنجاح 🎉",
-    subtitle: "شكراً لك! الكتاب ومكتبتك الخاصة في طريقهما إلى بريدك الآن.",
-    emailSent: "أرسلنا رسالة تحتوي على كل الروابط.",
-    openLibrary: "افتح مكتبتك الآن",
-    pending: "جارٍ تأكيد عملية الدفع…",
-    failed: "لم نستطع تأكيد الدفع. تواصل معنا إذا خُصم المبلغ.",
+    title: "تمام، الدفع نجح 🎉",
+    subtitle: "دي تفاصيل طلبك كاملة، ومكتبتك جاهزة تفتحها دلوقتي.",
+    emailSent: "كل حاجة جاهزة قدامك تحت.",
+    openLibrary: "افتح مكتبتك دلوقتي",
+    pending: "بنأكد عملية الدفع… ثواني.",
+    failed: "معرفناش نأكد الدفع. كلّمنا لو المبلغ اتخصم.",
+    orderTitle: "تفاصيل الطلب",
+    orderId: "رقم الطلب",
+    emailField: "الإيميل",
+    productField: "المنتج",
+    amountField: "المبلغ",
+    dateField: "تاريخ الطلب",
+    statusField: "الحالة",
+    statusPaid: "مدفوع",
+    statusPending: "قيد التأكيد",
+    statusFailed: "فشل",
+    productBook: "الكتاب بس",
+    productBundle: "الباقة الكاملة",
+    includes: "الطلب شامل",
+    includesBook: "الكتاب PDF و EPUB",
+    includesPrompts: "مكتبة ٢٠٠ برومبت",
+    includesBooks: "١٨ كتاب مختار في الذكاء الاصطناعي",
+    includesUpdates: "تحديثات مجانية مدى الحياة",
+    saveLink: "احفظ الرابط ده، هو مفتاح مكتبتك.",
+    copyLink: "انسخ رابط المكتبة",
+    copied: "اتنسخ ✔",
+    support: "أي مشكلة؟ كلّمنا وهنحلها على طول.",
   },
 };
 
@@ -294,7 +376,10 @@ const en: Dict = {
     efficiency: "↑ 18% efficiency",
     confidence: "98% decision confidence",
     cards: [
-      { title: "Clear visibility", desc: "A number-driven map of where you are and where you're going." },
+      {
+        title: "Clear visibility",
+        desc: "A number-driven map of where you are and where you're going.",
+      },
       { title: "Full automation", desc: "Ready workflows that execute instead of manual busywork." },
       { title: "Faster decisions", desc: "Turn what you learn into immediate execution." },
     ],
@@ -324,7 +409,7 @@ const en: Dict = {
     loading: "Redirecting…",
     emailLabel: "Your email",
     emailPlaceholder: "name@example.com",
-    emailHint: "We'll send the book and library to this address after payment.",
+    emailHint: "Right after payment you get a page with your full order details and library link.",
     error: "Could not start checkout, please try again.",
   },
   reviews: {
@@ -332,9 +417,51 @@ const en: Dict = {
     title: "Real results",
     subtitle: "4.9 out of 5 from more than 1,200 readers.",
     items: [
-      { name: "Mahmoud Saeed", role: "Agency founder", quote: "I applied one chapter and tripled agency revenue in 90 days." },
-      { name: "Sara Alotaibi", role: "Content writer", quote: "The prompt library alone is worth ten times the price." },
-      { name: "Ahmed Fathy", role: "Product developer", quote: "My first SaaS shipped in a month thanks to the roadmap." },
+      {
+        name: "Mahmoud Saeed",
+        role: "Agency founder",
+        quote: "I applied one chapter and tripled agency revenue in 90 days.",
+      },
+      {
+        name: "Sara Alotaibi",
+        role: "Content writer",
+        quote: "The prompt library alone is worth ten times the price.",
+      },
+      {
+        name: "Ahmed Fathy",
+        role: "Product developer",
+        quote: "My first SaaS shipped in a month thanks to the roadmap.",
+      },
+      {
+        name: "Marwa Abdelrahman",
+        role: "Graphic designer",
+        quote: "I went from 3 projects a month to 8 — automation made the difference.",
+      },
+      {
+        name: "Karim Elshennawy",
+        role: "Freelancer",
+        quote: "My first dollar client landed two weeks after chapter four.",
+      },
+      {
+        name: "Nourhan Mostafa",
+        role: "Social media specialist",
+        quote: "I now prepare a full month of content in two days.",
+      },
+      {
+        name: "Amr Hassan",
+        role: "Store owner",
+        quote: "Product copy and ads run on prompts now, conversion is up 22%.",
+      },
+      {
+        name: "Dina Raafat",
+        role: "Online teacher",
+        quote: "The simplest book on the topic — steps you can execute today.",
+      },
+      {
+        name: "Ziad Elgendy",
+        role: "Software engineer",
+        quote: "The pricing section changed my thinking; I doubled my rates with no pushback.",
+      },
     ],
   },
   cta: {
@@ -347,7 +474,7 @@ const en: Dict = {
     title: "Your private library",
     subtitle: "18 curated AI references + the prompt library.",
     locked: "This library is for buyers only",
-    lockedDesc: "After checkout you receive a private link to your library by email.",
+    lockedDesc: "Right after checkout you land on a page with your details and library link.",
     open: "Open the book",
     promptsNote: "Private prompt library",
     checking: "Verifying access…",
@@ -355,11 +482,32 @@ const en: Dict = {
   },
   thanks: {
     title: "Payment complete 🎉",
-    subtitle: "Thank you! Your book and private library are on their way to your inbox.",
-    emailSent: "We sent an email with every link.",
+    subtitle: "Here are your full order details — your library is ready right now.",
+    emailSent: "Everything you need is right below.",
     openLibrary: "Open your library now",
     pending: "Confirming your payment…",
     failed: "We couldn't confirm the payment. Contact us if you were charged.",
+    orderTitle: "Order details",
+    orderId: "Order ID",
+    emailField: "Email",
+    productField: "Product",
+    amountField: "Amount",
+    dateField: "Order date",
+    statusField: "Status",
+    statusPaid: "Paid",
+    statusPending: "Confirming",
+    statusFailed: "Failed",
+    productBook: "Book only",
+    productBundle: "Complete bundle",
+    includes: "What's included",
+    includesBook: "The book in PDF and EPUB",
+    includesPrompts: "200-prompt library",
+    includesBooks: "18 curated AI references",
+    includesUpdates: "Free lifetime updates",
+    saveLink: "Save this link — it's the key to your library.",
+    copyLink: "Copy library link",
+    copied: "Copied ✔",
+    support: "Need help? Reach out and we'll sort it immediately.",
   },
 };
 

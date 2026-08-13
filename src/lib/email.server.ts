@@ -59,7 +59,8 @@ export async function sendPurchaseEmail(opts: {
   const cfg = smtpConfig();
   if (!cfg) throw new Error("SMTP credentials are not configured");
 
-  const { WorkerMailer } = await import("worker-mailer");
+  const mailerModule = "worker-mailer";
+  const { WorkerMailer } = (await import(/* @vite-ignore */ mailerModule)) as typeof import("worker-mailer");
   const mailer = await WorkerMailer.connect({
     host: cfg.host,
     port: cfg.port,

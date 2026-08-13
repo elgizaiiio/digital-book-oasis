@@ -1,8 +1,6 @@
 import heroBg from "@/assets/hero-bg.jpg";
 import demoThumb from "@/assets/watch-demo-thumbnail.jpg";
-import { Play, Menu, X, ArrowLeft, ArrowRight } from "lucide-react";
-import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Play, ArrowLeft, ArrowRight } from "lucide-react";
 import { t, dir, type Lang } from "@/lib/i18n";
 
 const glass =
@@ -12,7 +10,6 @@ const HERO_VIDEO =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260808_112712_da9d53df-6d27-4b12-bdf6-aa9dc2622bdf.mp4";
 
 export default function HeroVantage({ lang }: { lang: Lang }) {
-  const [open, setOpen] = useState(false);
   const d = t(lang);
   const rtl = lang === "ar";
   const Arrow = rtl ? ArrowLeft : ArrowRight;
@@ -147,19 +144,5 @@ export default function HeroVantage({ lang }: { lang: Lang }) {
         </button>
       </article>
     </section>
-  );
-}
-
-function LangSwitch({ lang, className = "" }: { lang: Lang; className?: string }) {
-  const other: Lang = lang === "ar" ? "en" : "ar";
-  return (
-    <Link
-      to="/$lang"
-      params={{ lang: other }}
-      className={`h-[42px] items-center rounded-[7px] border border-white/25 px-4 text-[14px] font-medium text-white/90 backdrop-blur-sm transition hover:bg-white/10 ${className}`}
-      style={{ display: "inline-flex", alignItems: "center" }}
-    >
-      {other === "en" ? "English" : "العربية"}
-    </Link>
   );
 }

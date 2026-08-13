@@ -26,13 +26,23 @@ export async function getPurchaseStatus(purchaseId: string) {
 
   const { data } = await supabaseAdmin
     .from("purchases")
-    .select("status, access_token, lang")
+    .select("id, status, access_token, lang, email, product, amount, currency, created_at")
     .eq("id", purchaseId)
     .maybeSingle();
 
-  if (!data) return { status: "unknown" as const, token: null };
+  if (!data) return { status: "unknown" as const, token: null, order: null };
+
+  const paid = data.status === "paid";
   return {
     status: data.status as "pending" | "paid" | "failed",
-    token: data.status === "paid" ? (data.access_token as string) : null,
+    token: paid ? (data.access_token as string) : null,
+    order: {
+      id: data.id as string,
+      email: data.email as string,
+      product: data.product as "book" | "bundle",
+      amount: Number(data.amount ?? 0),
+      currency: (data.currency ?? "EGP") as string,
+      createdAt: data.created_at as string,
+    },
   };
 }

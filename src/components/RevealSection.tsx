@@ -2,6 +2,9 @@ import { ArrowUpLeft, ArrowUpRight } from "lucide-react";
 import bookImg from "@/assets/book-real.jpg";
 import { t, dir, type Lang } from "@/lib/i18n";
 
+const BOOK_VIDEO =
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260618_174853_aac61aa2-0f3f-4cf1-bc78-7f657dd11164.mp4";
+
 export default function RevealSection({ lang }: { lang: Lang }) {
   const d = t(lang).bookSection;
   const rtl = lang === "ar";
@@ -62,13 +65,16 @@ export default function RevealSection({ lang }: { lang: Lang }) {
         <div className="order-1 lg:order-2">
           <div className="relative mx-auto w-full max-w-md">
             <div className="absolute -inset-6 rounded-[2rem] bg-gray-50" aria-hidden />
-            <img
-              src={bookImg}
-              alt={`${d.title1} ${d.title2}`}
-              loading="lazy"
-              width={1200}
-              height={1504}
-              className="relative w-full rounded-2xl object-cover shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)]"
+            <video
+              src={BOOK_VIDEO}
+              poster={bookImg}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label={`${d.title1} ${d.title2}`}
+              className="relative aspect-[4/5] w-full rounded-2xl object-cover shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)]"
             />
           </div>
         </div>

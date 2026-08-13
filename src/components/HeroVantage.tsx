@@ -1,8 +1,6 @@
 import heroBg from "@/assets/hero-bg.jpg";
 import demoThumb from "@/assets/watch-demo-thumbnail.jpg";
-import { Play, Menu, X, ArrowLeft, ArrowRight } from "lucide-react";
-import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Play, ArrowLeft, ArrowRight } from "lucide-react";
 import { t, dir, type Lang } from "@/lib/i18n";
 
 const glass =
@@ -12,7 +10,6 @@ const HERO_VIDEO =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260808_112712_da9d53df-6d27-4b12-bdf6-aa9dc2622bdf.mp4";
 
 export default function HeroVantage({ lang }: { lang: Lang }) {
-  const [open, setOpen] = useState(false);
   const d = t(lang);
   const rtl = lang === "ar";
   const Arrow = rtl ? ArrowLeft : ArrowRight;
@@ -77,54 +74,13 @@ export default function HeroVantage({ lang }: { lang: Lang }) {
           </div>
         </div>
 
-        <LangSwitch
-          lang={lang}
-          className="enter-up hidden md:inline-flex ltr:ml-[clamp(12px,1.9vw,29px)] rtl:mr-[clamp(12px,1.9vw,29px)]"
-        />
-
         <a
           href="#pricing"
-          className="enter-up hidden h-[42px] items-center rounded-[7px] bg-white px-5 text-[15px] font-semibold text-[#101010] shadow-[inset_0_1px_0_rgba(255,255,255,.72),0_1px_5px_rgba(0,0,0,.34)] transition hover:brightness-95 md:inline-flex ltr:ml-3 rtl:mr-3"
+          className="enter-up inline-flex h-[42px] items-center rounded-[7px] bg-white px-5 text-[15px] font-semibold text-[#101010] shadow-[inset_0_1px_0_rgba(255,255,255,.72),0_1px_5px_rgba(0,0,0,.34)] transition hover:brightness-95 ltr:ml-auto rtl:mr-auto"
           style={{ animationDelay: "220ms" }}
         >
           {d.hero.buy}
         </a>
-
-        <button
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-label={d.hero.menu}
-          className={`grid size-[46px] place-items-center rounded-[11px] text-white md:hidden ltr:ml-auto rtl:mr-auto ${glass}`}
-        >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
-
-        {open && (
-          <div
-            className={`absolute top-[58px] w-[min(340px,calc(100vw-48px))] rounded-2xl p-5 md:hidden ltr:right-0 rtl:left-0 ${glass}`}
-          >
-            <nav className="flex flex-col gap-4">
-              {navLinks.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="text-[15px] text-white/85"
-                >
-                  {l.label}
-                </a>
-              ))}
-              <LangSwitch lang={lang} className="w-fit" />
-              <a
-                href="#pricing"
-                onClick={() => setOpen(false)}
-                className="mt-1 grid h-11 place-items-center rounded-[7px] bg-white text-[15px] font-semibold text-[#101010]"
-              >
-                {d.hero.buy}
-              </a>
-            </nav>
-          </div>
-        )}
       </header>
 
       <div className="absolute bottom-[clamp(34px,5.5vh,64px)] z-10 flex max-w-[min(92vw,760px)] flex-col items-start ltr:left-[clamp(24px,4vw,96px)] rtl:right-[clamp(24px,4vw,96px)]">
@@ -188,19 +144,5 @@ export default function HeroVantage({ lang }: { lang: Lang }) {
         </button>
       </article>
     </section>
-  );
-}
-
-function LangSwitch({ lang, className = "" }: { lang: Lang; className?: string }) {
-  const other: Lang = lang === "ar" ? "en" : "ar";
-  return (
-    <Link
-      to="/$lang"
-      params={{ lang: other }}
-      className={`h-[42px] items-center rounded-[7px] border border-white/25 px-4 text-[14px] font-medium text-white/90 backdrop-blur-sm transition hover:bg-white/10 ${className}`}
-      style={{ display: "inline-flex", alignItems: "center" }}
-    >
-      {other === "en" ? "English" : "العربية"}
-    </Link>
   );
 }

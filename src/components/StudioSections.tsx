@@ -328,32 +328,33 @@ function PricingSection({ lang }: { lang: Lang }) {
 
 function TestimonialsSection({ lang }: { lang: Lang }) {
   const d = t(lang).reviews;
-  const items = d.items;
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => setIndex((i) => (i + 1) % items.length), 4000);
-    return () => clearInterval(timer);
-  }, [items.length]);
-
-  const active = items[index] ?? items[0]!;
 
   return (
-    <section id="reviews" className="mx-auto max-w-3xl px-6 py-20 text-center">
+    <section id="reviews" className="mx-auto max-w-6xl px-6 py-20">
       <SectionHead badge={d.badge} title={d.title} subtitle={d.subtitle} />
-      <div className={`mt-10 rounded-3xl bg-white p-8 ${softShadow}`}>
-        <p className="text-lg leading-relaxed text-[#0f172a]">“{active.quote}”</p>
-        <p className="mt-5 text-sm font-semibold text-[#0f172a]">{active.name}</p>
-        <p className="text-sm text-[#64748b]">{active.role}</p>
-      </div>
-      <div className="mt-6 flex justify-center gap-2">
-        {items.map((item, i) => (
-          <button
-            key={item.name}
-            onClick={() => setIndex(i)}
-            aria-label={item.name}
-            className={`h-1.5 rounded-full transition-all ${i === index ? "w-6 bg-[#0f172a]" : "w-1.5 bg-[#cbd5e1]"}`}
-          />
+      <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {d.items.map((item, i) => (
+          <Reveal key={item.name} delay={0.05 * (i % 3)}>
+            <figure className={`h-full rounded-3xl bg-white p-6 ${softShadow}`}>
+              <div className="flex gap-0.5 text-[#F5C344]" aria-hidden>
+                {"★★★★★".split("").map((s, j) => (
+                  <span key={j}>{s}</span>
+                ))}
+              </div>
+              <blockquote className="mt-4 text-[0.95rem] leading-relaxed text-[#0f172a]">
+                “{item.quote}”
+              </blockquote>
+              <figcaption className="mt-5 flex items-center gap-3">
+                <span className="grid size-9 place-items-center rounded-full bg-[#0f172a] text-xs font-semibold text-white">
+                  {item.name.slice(0, 1)}
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold text-[#0f172a]">{item.name}</span>
+                  <span className="block text-xs text-[#64748b]">{item.role}</span>
+                </span>
+              </figcaption>
+            </figure>
+          </Reveal>
         ))}
       </div>
     </section>

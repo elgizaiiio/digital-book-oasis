@@ -10,33 +10,89 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LangIndexRouteImport } from './routes/$lang.index'
+import { Route as LangLibraryRouteImport } from './routes/$lang.library'
+import { Route as LangThankYouRouteImport } from './routes/$lang.thank-you'
+import { Route as ApiPublicDodoWebhookRouteImport } from './routes/api/public/dodo-webhook'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LangIndexRoute = LangIndexRouteImport.update({
+  id: '/$lang/',
+  path: '/$lang/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangLibraryRoute = LangLibraryRouteImport.update({
+  id: '/$lang/library',
+  path: '/$lang/library',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangThankYouRoute = LangThankYouRouteImport.update({
+  id: '/$lang/thank-you',
+  path: '/$lang/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicDodoWebhookRoute = ApiPublicDodoWebhookRouteImport.update({
+  id: '/api/public/dodo-webhook',
+  path: '/api/public/dodo-webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$lang/library': typeof LangLibraryRoute
+  '/$lang/thank-you': typeof LangThankYouRoute
+  '/$lang/': typeof LangIndexRoute
+  '/api/public/dodo-webhook': typeof ApiPublicDodoWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$lang/library': typeof LangLibraryRoute
+  '/$lang/thank-you': typeof LangThankYouRoute
+  '/$lang': typeof LangIndexRoute
+  '/api/public/dodo-webhook': typeof ApiPublicDodoWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$lang/library': typeof LangLibraryRoute
+  '/$lang/thank-you': typeof LangThankYouRoute
+  '/$lang/': typeof LangIndexRoute
+  '/api/public/dodo-webhook': typeof ApiPublicDodoWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/$lang/library'
+    | '/$lang/thank-you'
+    | '/$lang/'
+    | '/api/public/dodo-webhook'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/$lang/library'
+    | '/$lang/thank-you'
+    | '/$lang'
+    | '/api/public/dodo-webhook'
+  id:
+    | '__root__'
+    | '/'
+    | '/$lang/library'
+    | '/$lang/thank-you'
+    | '/$lang/'
+    | '/api/public/dodo-webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LangLibraryRoute: typeof LangLibraryRoute
+  LangThankYouRoute: typeof LangThankYouRoute
+  LangIndexRoute: typeof LangIndexRoute
+  ApiPublicDodoWebhookRoute: typeof ApiPublicDodoWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +104,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$lang/': {
+      id: '/$lang/'
+      path: '/$lang'
+      fullPath: '/$lang/'
+      preLoaderRoute: typeof LangIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/library': {
+      id: '/$lang/library'
+      path: '/$lang/library'
+      fullPath: '/$lang/library'
+      preLoaderRoute: typeof LangLibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/thank-you': {
+      id: '/$lang/thank-you'
+      path: '/$lang/thank-you'
+      fullPath: '/$lang/thank-you'
+      preLoaderRoute: typeof LangThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/dodo-webhook': {
+      id: '/api/public/dodo-webhook'
+      path: '/api/public/dodo-webhook'
+      fullPath: '/api/public/dodo-webhook'
+      preLoaderRoute: typeof ApiPublicDodoWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LangLibraryRoute: LangLibraryRoute,
+  LangThankYouRoute: LangThankYouRoute,
+  LangIndexRoute: LangIndexRoute,
+  ApiPublicDodoWebhookRoute: ApiPublicDodoWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

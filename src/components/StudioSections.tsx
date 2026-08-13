@@ -3,7 +3,7 @@ import { Search, Sparkles, Check, ArrowUpLeft, ArrowUpRight, Loader2 } from "luc
 import { useServerFn } from "@tanstack/react-start";
 import { useInViewAnimation } from "@/hooks/useInViewAnimation";
 import { createCheckout } from "@/lib/checkout.functions";
-import { t, dir, PRICING, type Lang, type ProductId } from "@/lib/i18n";
+import { t, dir, PRICING, priceLabel, type Lang, type ProductId } from "@/lib/i18n";
 
 const softShadow = "shadow-[0_0_0_0.5px_rgba(0,0,0,0.05),0_10px_30px_-10px_rgba(0,0,0,0.12)]";
 
@@ -293,7 +293,7 @@ function PricingSection({ lang }: { lang: Lang }) {
           <div className={`h-full rounded-3xl bg-white p-8 ${softShadow}`}>
             <h3 className="text-lg font-semibold text-[#0f172a]">{d.bookTitle}</h3>
             <p className="mt-2 text-sm text-[#64748b]">{d.bookDesc}</p>
-            <p className="mt-8 text-3xl font-semibold text-[#0f172a]">${PRICING[lang].book}</p>
+            <p className="mt-8 text-3xl font-semibold text-[#0f172a]">{priceLabel(lang, PRICING[lang].book)}</p>
             <button
               onClick={() => buy("book")}
               disabled={busy !== null}
@@ -308,7 +308,7 @@ function PricingSection({ lang }: { lang: Lang }) {
           <div className="h-full rounded-3xl bg-[#0f172a] p-8 text-white shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]">
             <h3 className="text-lg font-semibold">{d.bundleTitle}</h3>
             <p className="mt-2 text-sm text-white/70">{d.bundleDesc}</p>
-            <p className="mt-8 text-3xl font-semibold">${PRICING[lang].bundle}</p>
+            <p className="mt-8 text-3xl font-semibold">{priceLabel(lang, PRICING[lang].bundle)}</p>
             <button
               onClick={() => buy("bundle")}
               disabled={busy !== null}

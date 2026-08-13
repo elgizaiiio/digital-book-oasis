@@ -13,7 +13,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as LangIndexRouteImport } from './routes/$lang.index'
 import { Route as LangLibraryRouteImport } from './routes/$lang.library'
 import { Route as LangThankYouRouteImport } from './routes/$lang.thank-you'
-import { Route as ApiPublicDodoWebhookRouteImport } from './routes/api/public/dodo-webhook'
 import { Route as ApiPublicKashierWebhookRouteImport } from './routes/api/public/kashier-webhook'
 
 const IndexRoute = IndexRouteImport.update({
@@ -36,11 +35,6 @@ const LangThankYouRoute = LangThankYouRouteImport.update({
   path: '/$lang/thank-you',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiPublicDodoWebhookRoute = ApiPublicDodoWebhookRouteImport.update({
-  id: '/api/public/dodo-webhook',
-  path: '/api/public/dodo-webhook',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ApiPublicKashierWebhookRoute = ApiPublicKashierWebhookRouteImport.update({
   id: '/api/public/kashier-webhook',
   path: '/api/public/kashier-webhook',
@@ -52,7 +46,6 @@ export interface FileRoutesByFullPath {
   '/$lang/library': typeof LangLibraryRoute
   '/$lang/thank-you': typeof LangThankYouRoute
   '/$lang/': typeof LangIndexRoute
-  '/api/public/dodo-webhook': typeof ApiPublicDodoWebhookRoute
   '/api/public/kashier-webhook': typeof ApiPublicKashierWebhookRoute
 }
 export interface FileRoutesByTo {
@@ -60,7 +53,6 @@ export interface FileRoutesByTo {
   '/$lang/library': typeof LangLibraryRoute
   '/$lang/thank-you': typeof LangThankYouRoute
   '/$lang': typeof LangIndexRoute
-  '/api/public/dodo-webhook': typeof ApiPublicDodoWebhookRoute
   '/api/public/kashier-webhook': typeof ApiPublicKashierWebhookRoute
 }
 export interface FileRoutesById {
@@ -69,7 +61,6 @@ export interface FileRoutesById {
   '/$lang/library': typeof LangLibraryRoute
   '/$lang/thank-you': typeof LangThankYouRoute
   '/$lang/': typeof LangIndexRoute
-  '/api/public/dodo-webhook': typeof ApiPublicDodoWebhookRoute
   '/api/public/kashier-webhook': typeof ApiPublicKashierWebhookRoute
 }
 export interface FileRouteTypes {
@@ -79,7 +70,6 @@ export interface FileRouteTypes {
     | '/$lang/library'
     | '/$lang/thank-you'
     | '/$lang/'
-    | '/api/public/dodo-webhook'
     | '/api/public/kashier-webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -87,7 +77,6 @@ export interface FileRouteTypes {
     | '/$lang/library'
     | '/$lang/thank-you'
     | '/$lang'
-    | '/api/public/dodo-webhook'
     | '/api/public/kashier-webhook'
   id:
     | '__root__'
@@ -95,7 +84,6 @@ export interface FileRouteTypes {
     | '/$lang/library'
     | '/$lang/thank-you'
     | '/$lang/'
-    | '/api/public/dodo-webhook'
     | '/api/public/kashier-webhook'
   fileRoutesById: FileRoutesById
 }
@@ -104,7 +92,6 @@ export interface RootRouteChildren {
   LangLibraryRoute: typeof LangLibraryRoute
   LangThankYouRoute: typeof LangThankYouRoute
   LangIndexRoute: typeof LangIndexRoute
-  ApiPublicDodoWebhookRoute: typeof ApiPublicDodoWebhookRoute
   ApiPublicKashierWebhookRoute: typeof ApiPublicKashierWebhookRoute
 }
 
@@ -138,13 +125,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangThankYouRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/public/dodo-webhook': {
-      id: '/api/public/dodo-webhook'
-      path: '/api/public/dodo-webhook'
-      fullPath: '/api/public/dodo-webhook'
-      preLoaderRoute: typeof ApiPublicDodoWebhookRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/api/public/kashier-webhook': {
       id: '/api/public/kashier-webhook'
       path: '/api/public/kashier-webhook'
@@ -160,7 +140,6 @@ const rootRouteChildren: RootRouteChildren = {
   LangLibraryRoute: LangLibraryRoute,
   LangThankYouRoute: LangThankYouRoute,
   LangIndexRoute: LangIndexRoute,
-  ApiPublicDodoWebhookRoute: ApiPublicDodoWebhookRoute,
   ApiPublicKashierWebhookRoute: ApiPublicKashierWebhookRoute,
 }
 export const routeTree = rootRouteImport

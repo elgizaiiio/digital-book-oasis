@@ -27,11 +27,15 @@ export default function HeroVantage({ lang }: { lang: Lang }) {
       dir={dir(lang)}
       className="relative isolate h-[100svh] min-h-[600px] w-full overflow-hidden bg-black font-body"
     >
-      <img
-        src={heroBg}
-        alt=""
-        width={1920}
-        height={1088}
+      <video
+        src={HERO_VIDEO}
+        poster={heroBg}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-30 h-full w-full select-none object-cover object-center"
       />
       <div

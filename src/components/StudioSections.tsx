@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Search, Sparkles, Check, ArrowUpLeft, ArrowUpRight, Loader2 } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { useInViewAnimation } from "@/hooks/useInViewAnimation";

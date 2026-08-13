@@ -2,6 +2,9 @@ import { ArrowUpLeft, ArrowUpRight } from "lucide-react";
 import bookImg from "@/assets/book-real.jpg";
 import { t, dir, type Lang } from "@/lib/i18n";
 
+const BOOK_VIDEO =
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260618_174853_aac61aa2-0f3f-4cf1-bc78-7f657dd11164.mp4";
+
 export default function RevealSection({ lang }: { lang: Lang }) {
   const d = t(lang).bookSection;
   const rtl = lang === "ar";

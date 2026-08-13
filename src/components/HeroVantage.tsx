@@ -8,6 +8,9 @@ import { t, dir, type Lang } from "@/lib/i18n";
 const glass =
   "border border-white/[0.13] bg-[linear-gradient(145deg,rgba(24,22,20,.80),rgba(5,12,14,.86))] shadow-[0_2px_10px_rgba(0,0,0,.44),0_0_0_3px_rgba(255,255,255,.035)_inset,0_0_0_1px_rgba(0,0,0,.9)] backdrop-blur-[14px]";
 
+const HERO_VIDEO =
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260808_112712_da9d53df-6d27-4b12-bdf6-aa9dc2622bdf.mp4";
+
 export default function HeroVantage({ lang }: { lang: Lang }) {
   const [open, setOpen] = useState(false);
   const d = t(lang);

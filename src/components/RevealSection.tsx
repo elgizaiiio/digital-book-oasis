@@ -75,6 +75,7 @@ export default function RevealSection({ lang }: { lang: Lang }) {
               preload="metadata"
               aria-label={`${d.title1} ${d.title2}`}
               className="relative aspect-[4/5] w-full rounded-2xl object-cover shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)]"
+              style={{ objectPosition: "right center" }}
             />
           </div>
         </div>
